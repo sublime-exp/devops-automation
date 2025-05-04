@@ -19,11 +19,10 @@ volumes:
 #use the generated password in the container logs to enter on localhost:8080
 #craate admin user: admin:admin
 #dashboard -> manage jenkins -> tools configuration -> add maven 3.9.9 from apache automated
-# new element: devops-automation (pipeline)
-# give gitHubUrl: https://github.com/sublime-exp/devops-automation
-# GitHub hook trigger for GITScm polling
+#new element: devops-automation (pipeline)
+#set github url: https://github.com/sublime-exp/devops-automation
+#add github hook trigger for GITScm polling
 
-#script:
 #pipeline {
 #    agent any
 #    tools {
