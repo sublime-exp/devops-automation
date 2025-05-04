@@ -1,7 +1,0 @@
-log in aws
-create ec2 instance
-configurations:
-name:       my-jenkins-node
-type:       t3.large (8Gb)
-key:        RSA access key (jenkins-access-key) (newly created RSA from the interface)
-storage:    25Gb root volume

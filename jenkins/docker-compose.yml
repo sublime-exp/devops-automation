@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  jenkins:
+    build: .
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    user: root
+
+volumes:
+  jenkins_home:
+
+#use the generated password in the container logs to enter on localhost:8080
+#craate admin user: admin:admin
+#dashboard -> manage jenkins -> tools configuration -> add maven 3.9.9 from apache automated
+# new element: devops-automation (pipeline)
+# give gitHubUrl: https://github.com/sublime-exp/devops-automation
+# GitHub hook trigger for GITScm polling
+
+#script:
+#pipeline {
+#    agent any
+#    tools {
+#        maven "M3"
+#    }
+#    stages {
+#        stage('Build Maven') {
+#            steps {
+#                <pipeline syntax snippet for checkout>
+#                sh "mvn clean install"
+#            }
+#        }
+#        stage('Build Doker Image') {
+#            steps {
+#                script {
+#                    sh "docker build -t ivakis/devops-integration ."
+#                }
+#            }
+#        },
+#        stage('Push Image') {
+#            steps {
+#                script {
+#                     <create secret from secret text give it credentials id as 'dockerhub-pwd'>
+#                     <pipeline syntax snippet for withCredentials then from secret text name the variable 'dockerhubpwd' and add it>
+#                }
+#            }
+#        }
+#    }
+#}
+#
+
