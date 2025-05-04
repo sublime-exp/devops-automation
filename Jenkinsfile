@@ -21,8 +21,10 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh "docker login -u ivakis -p $dockerhubpwd"
-                    sh "docker push ivakis/devops-integration"
+                    sh '''
+                        echo "$dockerhubpwd" | docker login -u ivakis --password-stdin
+                        docker push ivakis/devops-integration
+                    '''
                   }
                 }
             }
