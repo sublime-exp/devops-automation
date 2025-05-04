@@ -22,6 +22,11 @@ volumes:
 #new element: devops-automation (pipeline)
 #set github url: https://github.com/sublime-exp/devops-automation
 #add github hook trigger for GITScm polling
+#Go to your GitHub repository → Settings → Webhooks.
+#Add a webhook:
+#Payload URL: http://<your-jenkins-url>/github-webhook/
+#Content type: application/json
+#Events: Choose “Just the push event” (or more if needed).
 
 #pipeline {
 #    agent any
