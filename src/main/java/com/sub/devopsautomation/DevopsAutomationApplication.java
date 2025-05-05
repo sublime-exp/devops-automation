@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DevopsAutomationApplication {
 
     public static void main(String[] args) {
-        System.out.println("Its Version 4 now !");
+        System.out.println("Its Version 5 now !");
         SpringApplication.run(DevopsAutomationApplication.class, args);
     }
 
