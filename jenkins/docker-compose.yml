@@ -28,6 +28,20 @@ volumes:
 #Content type: application/json
 #Events: Choose “Just the push event” (or more if needed).
 
+#install docker pipeline plugin..
+#kubectl config view --raw > kubeconfig.yaml to extract the kube config file and upload it as credentials in
+# Steps to Configure Jenkins for Kubernetes Deployment
+#Install the Kubernetes CLI Plugin:
+#Navigate to Manage Jenkins → Manage Plugins → Available.
+#Search for Kubernetes CLI Plugin and install it.
+#Restart Jenkins if prompted.
+#Add Kubernetes Credentials:
+#Go to Manage Jenkins → Credentials → (select appropriate domain).
+#Click Add Credentials.
+#Choose Kind: Secret file.
+#Upload your kubeconfig file.
+#Assign an ID (e.g., kubeconfig-id) for reference in your pipeline.
+
 #pipeline {
 #    agent any
 #    tools {

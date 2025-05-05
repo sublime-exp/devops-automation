@@ -4,6 +4,11 @@ pipeline {
         maven "M3"
     }
     stages {
+        stage('Check Java Version') {
+            steps {
+                 sh 'java -version'
+          }
+        }
         stage('Build Maven') {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sublime-exp/devops-automation']])
@@ -29,5 +34,10 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to K8S') {
+             steps {
+                 sh 'kubectl apply -f deployment.yml'
+             }
+         }
     }
 }
