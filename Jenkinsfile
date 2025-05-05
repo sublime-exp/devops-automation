@@ -46,7 +46,7 @@ pipeline {
         stage('Cleanup Docker Images') {
             steps {
                 script {
-                    sh "docker rmi ${env.IMAGE_TAG} || true"
+                    sh 'docker rmi ${env.IMAGE_TAG} || true'
                 }
             }
         }
