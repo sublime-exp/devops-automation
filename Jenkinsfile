@@ -40,10 +40,10 @@ pipeline {
         stage('Push Image to Hub') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh """
-                        echo "$dockerhubpwd" | docker login -u ${DOCKER_USER} --password-stdin
-                        docker push ${env.IMAGE_TAG}
-                    """
+                    sh '''
+                        echo "$dockerhubpwd" | docker login -u ivakis --password-stdin
+                        docker push $IMAGE_TAG
+                    '''
                 }
             }
         }
