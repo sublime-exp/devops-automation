@@ -19,18 +19,21 @@ volumes:
 #use the generated password in the container logs to enter on localhost:8080
 #craate admin user: admin:admin
 #dashboard -> manage jenkins -> tools configuration -> add maven 3.9.9 from apache automated
+#install docker pipeline plugin..
 #new element: devops-automation (pipeline)
 #set github url: https://github.com/sublime-exp/devops-automation
+
 #add github hook trigger for GITScm polling
-#Go to your GitHub repository → Settings → Webhooks.
+#Go to your GitHub repository → Settings → Webhooks. (only when hosted on production)
 #Add a webhook:
 #Payload URL: http://<your-jenkins-url>/github-webhook/
 #Content type: application/json
+
 #Events: Choose “Just the push event” (or more if needed).
 
-#install docker pipeline plugin..
+#add github pulling every 2 minutes (for local testing only)
+
 #kubectl config view --raw > kubeconfig.yaml to extract the kube config file and upload it as credentials in
-# Steps to Configure Jenkins for Kubernetes Deployment
 #Install the Kubernetes CLI Plugin:
 #Navigate to Manage Jenkins → Manage Plugins → Available.
 #Search for Kubernetes CLI Plugin and install it.
@@ -72,4 +75,3 @@ volumes:
 #    }
 #}
 #
-

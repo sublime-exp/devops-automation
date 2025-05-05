@@ -2,6 +2,5 @@
 wsl
 #ls -l /var/run/docker.sock
 #docker ps
-kubectl apply -f deployment.yml
-kubectl apply -f rbac.yml
+kubectl apply -f jenkins.yml
 kubectl port-forward svc/jenkins 8080:8080
