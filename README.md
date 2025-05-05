@@ -115,8 +115,46 @@ cd ../jenkins
 ```bash
 kubectl port-forward svc/jenkins 8080:8080
 ```
-_open `http://localhost:8080` to retrieve admin password and configure Jenkins pipeline_
+get the generated password from the container logs
 
-**Push Code to GitHub**
+_open `http://localhost:8080` to configure Jenkins pipeline_
+
+
+#### 6. **Add Docker Hub Credentials in Jenkins**
+
+To allow Jenkins to push Docker images to Docker Hub, you need to add your Docker Hub credentials as a secret in Jenkins:
+
+1. Open **Jenkins Dashboard**.
+2. Navigate to:  
+   `Manage Jenkins` → `Manage Credentials` → `(global)` → `Add Credentials`
+3. Fill in the form with the following values:
+  - **Kind**: `Secret text`
+  - **Secret**: *(Your Docker Hub password or access token)*
+  - **ID**: `dockerhub-pwd`
+4. Click **OK** to save the credential.
+
+> ✅ The ID `dockerhub-pwd` must match the one used in the `Jenkinsfile`.
+
+
+#### 7. **Configure Docker Hub Username in Jenkins and Pipeline Files**
+
+To correctly tag and push Docker images, you must update the Docker Hub username in a few places:
+
+1. **Edit `Jenkinsfile`**
+  - Locate the Docker image tag line:
+  - Replace `your-dockerhub-username` with your actual Docker Hub username.
+
+2. **Edit `jenkins/build-jenkins.sh`**
+  - This script builds the custom Jenkins Docker image.
+  - Update the Docker tag:
+
+3. **Edit `k8s/jenkins/jenkins.yml`**
+  - Ensure the custom image in the deployment spec reflects your username:
+
+4. **Edit `deployment.yml`**
+  - Ensure the custom image in the deployment spec reflects your username:
+
+> 🔁 Make sure these changes are consistent across your files to avoid image push/pull issues.
+#### 8. **Push Code to GitHub**
 
 Trigger the pipeline by pushing to the main branch.
