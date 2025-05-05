@@ -3,9 +3,6 @@ pipeline {
     tools {
         maven "M3"
     }
-    triggers {
-        pollSCM('H/2 * * * *')
-    }
     environment {
         DOCKER_USER = 'ivakis'
         IMAGE_NAME = 'devops-integration'
